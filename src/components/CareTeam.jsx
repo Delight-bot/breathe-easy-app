@@ -78,21 +78,40 @@ function CareTeam() {
     return relationshipTypes.find(r => r.value === type)?.icon || '👤';
   };
 
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div className="p-6 rounded-lg shadow-md bg-black bg-opacity-70 border border-white border-opacity-20">
       <div className="flex justify-between items-center mb-4">
-        <div>
-          <h3 className="text-xl font-semibold text-white">My Care Team</h3>
-          <p className="text-base text-gray-400">Manage who can access your health data</p>
+        <div className="flex-1">
+          <div className="flex items-center gap-3">
+            <h3 className="text-xl font-semibold text-white">My Care Team</h3>
+            <span className="px-3 py-1 bg-orange-500 bg-opacity-80 text-white text-sm font-bold rounded-full">
+              {contacts.length}
+            </span>
+          </div>
+          <p className="text-sm text-gray-400 mt-1">
+            {contacts.length === 0 ? 'No members added' : `${contacts.length} member${contacts.length !== 1 ? 's' : ''}`}
+          </p>
         </div>
-        {!showAddContact && (
-          <button
-            onClick={() => setShowAddContact(true)}
-            className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2 border border-white border-opacity-30"
-          >
-            Add Contact
-          </button>
-        )}
+        <div className="flex gap-2">
+          {contacts.length > 0 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition-colors text-sm"
+            >
+              {isExpanded ? 'Hide' : 'Show'}
+            </button>
+          )}
+          {!showAddContact && (
+            <button
+              onClick={() => setShowAddContact(true)}
+              className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-4 py-2 rounded-md transition-colors flex items-center gap-2 border border-white border-opacity-30 text-sm"
+            >
+              Add
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Add Contact Form */}
@@ -223,13 +242,14 @@ function CareTeam() {
       )}
 
       {/* Contacts List */}
-      <div className="space-y-3">
-        {contacts.length === 0 ? (
-          <p className="text-gray-400 text-center py-8">
-            No care team members added yet. Add someone to share your health data with.
-          </p>
-        ) : (
-          contacts.map((contact) => (
+      {isExpanded && (
+        <div className="space-y-3">
+          {contacts.length === 0 ? (
+            <p className="text-gray-400 text-center py-8">
+              No care team members added yet. Add someone to share your health data with.
+            </p>
+          ) : (
+            contacts.map((contact) => (
             <div key={contact.id} className="bg-white bg-opacity-10 p-4 rounded-lg border border-white border-opacity-20">
               <div className="flex justify-between items-start mb-3">
                 <div className="flex items-start gap-3">
@@ -300,7 +320,8 @@ function CareTeam() {
             </div>
           ))
         )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

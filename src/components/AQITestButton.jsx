@@ -14,9 +14,9 @@ function AQITestButton({ onTriggerAlert }) {
   ];
 
   return (
-    <div className="fixed bottom-6 left-6 bg-white rounded-lg shadow-xl z-50 border-2 border-blue-300">
+    <div className="fixed bottom-6 left-6 bg-black rounded-lg shadow-xl z-50 border-2 border-gray-700">
       <div
-        className="flex justify-between items-center p-3 bg-blue-600 rounded-t-lg cursor-pointer"
+        className="flex justify-between items-center p-3 bg-orange-500 rounded-t-lg cursor-pointer"
         onClick={(e) => {
           e.stopPropagation();
           setIsMinimized(!isMinimized);
@@ -24,7 +24,7 @@ function AQITestButton({ onTriggerAlert }) {
       >
         <h3 className="font-bold text-white text-sm">Test AQI Alerts</h3>
         <button
-          className="text-white font-bold text-lg hover:bg-blue-700 px-2 rounded"
+          className="text-white font-bold text-lg hover:bg-orange-600 px-2 rounded"
           onClick={(e) => {
             e.stopPropagation();
             setIsMinimized(!isMinimized);
@@ -39,7 +39,7 @@ function AQITestButton({ onTriggerAlert }) {
             <button
               key={level.aqi}
               onClick={() => onTriggerAlert(level.aqi)}
-              className="w-full text-left px-3 py-2 bg-gray-100 hover:bg-blue-100 rounded text-xs font-medium transition"
+              className="w-full text-left px-3 py-2 bg-gray-800 hover:bg-orange-500 text-gray-200 hover:text-white rounded text-xs font-medium transition border border-gray-700"
             >
               {level.label}
             </button>
