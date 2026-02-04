@@ -78,18 +78,18 @@ function ChatBot() {
       {/* Floating Chat Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-green-600 text-white rounded-full shadow-2xl hover:bg-green-700 transition-all duration-300 flex items-center justify-center text-3xl z-50 hover:scale-110"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-primary text-text-primary dark:text-background-dark rounded-full shadow-2xl hover:opacity-90 transition-all duration-300 flex items-center justify-center text-3xl z-50 hover:scale-110"
       >
         {isOpen ? '✕' : doctorAvatar}
       </button>
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl flex flex-col z-50 border border-gray-200">
+        <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-white dark:bg-[#1A2E22] rounded-2xl shadow-2xl flex flex-col z-50 border border-gray-200 dark:border-gray-700">
           {/* Header */}
-          <div className="bg-gradient-to-r from-green-600 to-blue-500 text-white p-4 rounded-t-2xl">
+          <div className="bg-primary text-text-primary dark:text-background-dark p-4 rounded-t-2xl">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl">
+              <div className="w-12 h-12 bg-white dark:bg-background-dark rounded-full flex items-center justify-center text-2xl">
                 {doctorAvatar}
               </div>
               <div>
@@ -100,7 +100,7 @@ function ChatBot() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-background-light dark:bg-background-dark">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -109,20 +109,20 @@ function ChatBot() {
                 <div className={`flex items-start space-x-2 max-w-[80%] ${message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-lg ${
                     message.sender === 'bot'
-                      ? 'bg-green-100'
-                      : 'bg-blue-100'
+                      ? 'bg-primary/20'
+                      : 'bg-primary/30'
                   }`}>
                     {message.sender === 'bot' ? doctorAvatar : getUserAvatar()}
                   </div>
                   <div>
                     <div className={`p-3 rounded-2xl ${
                       message.sender === 'bot'
-                        ? 'bg-white border border-gray-200'
-                        : 'bg-green-600 text-white'
+                        ? 'bg-white dark:bg-[#1A2E22] border border-gray-200 dark:border-gray-700 text-text-primary dark:text-white'
+                        : 'bg-primary text-text-primary dark:text-background-dark'
                     }`}>
                       <p className="text-sm">{message.text}</p>
                     </div>
-                    <p className="text-xs text-gray-400 mt-1 px-2">
+                    <p className="text-xs text-text-secondary mt-1 px-2">
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
                   </div>
@@ -133,18 +133,18 @@ function ChatBot() {
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200 bg-white rounded-b-2xl">
+          <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1A2E22] rounded-b-2xl">
             <div className="flex space-x-2">
               <input
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
+                className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-background-dark text-text-primary dark:text-white rounded-full focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
               />
               <button
                 type="submit"
-                className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition font-semibold"
+                className="bg-primary text-text-primary dark:text-background-dark px-6 py-2 rounded-full hover:opacity-90 transition font-semibold"
               >
                 Send
               </button>

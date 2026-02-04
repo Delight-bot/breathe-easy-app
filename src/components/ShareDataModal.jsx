@@ -113,9 +113,9 @@ function ShareDataModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-gradient-to-r from-green-600 to-blue-500 text-white p-6 rounded-t-lg">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="bg-white dark:bg-[#1A2E22] rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="sticky top-0 bg-primary text-text-primary dark:text-background-dark p-6 rounded-t-2xl">
           <div className="flex justify-between items-center">
             <div>
               <h2 className="text-2xl font-bold">Share Health Data</h2>
@@ -123,7 +123,7 @@ function ShareDataModal({ isOpen, onClose }) {
             </div>
             <button
               onClick={onClose}
-              className="text-white hover:bg-white hover:bg-opacity-20 rounded-full w-8 h-8 flex items-center justify-center"
+              className="hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center transition-colors"
             >
               ✕
             </button>
@@ -133,26 +133,26 @@ function ShareDataModal({ isOpen, onClose }) {
         <div className="p-6 space-y-6">
           {/* Select Recipients */}
           <div>
-            <h3 className="font-semibold text-gray-800 mb-3">Share With:</h3>
+            <h3 className="font-semibold text-text-primary dark:text-white mb-3">Share With:</h3>
             {careTeam.length === 0 ? (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                <p className="text-sm text-yellow-800">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-400 dark:border-yellow-600 rounded-xl p-4">
+                <p className="text-sm text-yellow-800 dark:text-yellow-400">
                   No care team members added yet. Add contacts in the Care Team section first.
                 </p>
               </div>
             ) : (
-              <div className="space-y-2 max-h-48 overflow-y-auto border border-gray-200 rounded-lg p-3">
+              <div className="space-y-2 max-h-48 overflow-y-auto border border-gray-200 dark:border-gray-700 rounded-xl p-3 bg-background-light dark:bg-background-dark">
                 {careTeam.map(contact => (
-                  <label key={contact.id} className="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer">
+                  <label key={contact.id} className="flex items-center p-2 hover:bg-primary/10 rounded-lg cursor-pointer transition-colors">
                     <input
                       type="checkbox"
                       checked={selectedContacts.includes(contact.id)}
                       onChange={() => toggleContact(contact.id)}
-                      className="mr-3 text-green-600 focus:ring-green-500 rounded"
+                      className="mr-3 text-primary focus:ring-primary rounded"
                     />
                     <div>
-                      <span className="font-medium text-gray-800">{contact.name}</span>
-                      <span className="text-sm text-gray-500 ml-2">
+                      <span className="font-medium text-text-primary dark:text-white">{contact.name}</span>
+                      <span className="text-sm text-text-secondary ml-2">
                         ({contact.relationship})
                       </span>
                     </div>
@@ -289,13 +289,13 @@ function ShareDataModal({ isOpen, onClose }) {
             <button
               onClick={handleShare}
               disabled={selectedContacts.length === 0}
-              className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="flex-1 bg-primary text-text-primary dark:text-background-dark px-6 py-3 rounded-lg font-semibold transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               📤 Share Data
             </button>
             <button
               onClick={onClose}
-              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-text-primary dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               Cancel
             </button>

@@ -68,14 +68,14 @@ export default function AlertBanner() {
   const recommendations = getRecommendations(aqi, userConditions);
 
   const getBannerStyle = () => {
-    if (aqi >= 200) return 'bg-blue-100 border-blue-600 text-blue-900';
-    if (aqi >= 150) return 'bg-blue-100 border-blue-500 text-blue-900';
-    if (aqi >= 100) return 'bg-blue-50 border-blue-400 text-blue-800';
-    return 'bg-blue-50 border-blue-300 text-blue-700';
+    if (aqi >= 200) return 'bg-red-50 border-red-500 text-red-900 dark:bg-red-900/20 dark:border-red-600 dark:text-red-100';
+    if (aqi >= 150) return 'bg-orange-50 border-orange-500 text-orange-900 dark:bg-orange-900/20 dark:border-orange-600 dark:text-orange-100';
+    if (aqi >= 100) return 'bg-yellow-50 border-yellow-500 text-yellow-900 dark:bg-yellow-900/20 dark:border-yellow-600 dark:text-yellow-100';
+    return 'bg-primary/10 border-primary text-text-primary dark:bg-primary/20 dark:border-primary dark:text-white';
   };
 
   return (
-    <div className={`${getBannerStyle()} border px-4 py-3 rounded-lg mb-4 shadow-sm`}>
+    <div className={`${getBannerStyle()} border-2 px-4 py-3 rounded-xl shadow-sm`}>
       <div className="flex items-start gap-3">
         <div className="flex-1">
           <div className="flex justify-between items-start mb-2">
@@ -84,7 +84,7 @@ export default function AlertBanner() {
             </h3>
             <button
               onClick={() => setShowBanner(false)}
-              className="text-sm opacity-70 hover:opacity-100"
+              className="text-sm opacity-70 hover:opacity-100 transition-opacity"
             >
               ✕
             </button>
@@ -106,7 +106,7 @@ export default function AlertBanner() {
           )}
 
           {recommendations.medical.length > 0 && (
-            <div className="mt-2 text-sm bg-white bg-opacity-50 p-2 rounded">
+            <div className="mt-2 text-sm bg-white/50 dark:bg-black/20 p-2 rounded-lg">
               <strong>For your condition:</strong>
               <ul className="list-disc list-inside ml-2 mt-1">
                 {recommendations.medical.slice(0, 2).map((rec, idx) => (

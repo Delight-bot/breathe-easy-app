@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Breatheasy Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec6d",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102218",
+                        "text-primary": "#111814",
+                        "text-secondary": "#618972",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "0.75rem", 
+                        "xl": "1rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary antialiased">
+<div class="relative mx-auto flex h-full min-h-screen w-full max-w-md flex-col overflow-x-hidden bg-background-light dark:bg-background-dark shadow-xl">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center justify-between bg-background-light/95 px-4 py-3 backdrop-blur-sm dark:bg-background-dark/95">
+<div class="flex items-center gap-2 rounded-full bg-white px-3 py-1.5 shadow-sm dark:bg-[#1A2E22]">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">location_on</span>
+<span class="text-sm font-bold text-text-primary dark:text-white">San Francisco, CA</span>
+<span class="material-symbols-outlined text-text-secondary" style="font-size: 18px;">expand_more</span>
+</div>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm transition-transform active:scale-95 dark:bg-[#1A2E22] text-text-primary dark:text-white">
+<span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+<span class="absolute right-3 top-3 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-[#1A2E22]"></span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex flex-col gap-6 p-4">
+<!-- Hero AQI Card -->
+<div class="relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm dark:bg-[#1A2E22]">
+<!-- Background decorative gradient -->
+<div class="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="absolute -left-16 -bottom-16 h-48 w-48 rounded-full bg-primary/5 blur-3xl"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<p class="mb-4 text-xs font-medium uppercase tracking-wider text-text-secondary">Current Air Quality</p>
+<div class="relative mb-4 flex h-48 w-48 items-center justify-center">
+<!-- Progress Ring SVG -->
+<svg class="h-full w-full -rotate-90 transform" viewbox="0 0 100 100">
+<!-- Background Circle -->
+<circle class="text-gray-100 dark:text-gray-800" cx="50" cy="50" fill="transparent" r="42" stroke="currentColor" stroke-width="8"></circle>
+<!-- Progress Circle -->
+<circle cx="50" cy="50" fill="transparent" r="42" stroke="#13ec6d" stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-5xl font-extrabold tracking-tight text-text-primary dark:text-white">34</span>
+<span class="text-sm font-bold text-primary">AQI</span>
+</div>
+</div>
+<h2 class="mb-1 text-2xl font-bold text-text-primary dark:text-white">Excellent</h2>
+<p class="mb-4 text-sm text-text-secondary">The air is clean and perfect for outdoor activities.</p>
+<div class="flex items-center gap-2 rounded-lg bg-background-light px-3 py-1.5 dark:bg-background-dark">
+<span class="material-symbols-outlined text-sm text-text-secondary">schedule</span>
+<p class="text-xs font-medium text-text-secondary">Updated 2 mins ago</p>
+</div>
+</div>
+</div>
+<!-- Health Advice Section -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-text-primary dark:text-white">Health Advice</h3>
+<a class="text-sm font-semibold text-primary" href="#">View all</a>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
+<!-- Card 1 -->
+<div class="flex min-w-[200px] flex-col rounded-xl bg-white p-4 shadow-sm dark:bg-[#1A2E22]">
+<div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">directions_run</span>
+</div>
+<h4 class="mb-1 text-base font-bold text-text-primary dark:text-white">Outdoor Sports</h4>
+<p class="text-sm text-text-secondary">Go for it! It's a great day for a run.</p>
+</div>
+<!-- Card 2 -->
+<div class="flex min-w-[200px] flex-col rounded-xl bg-white p-4 shadow-sm dark:bg-[#1A2E22]">
+<div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="material-symbols-outlined">masks</span>
+</div>
+<h4 class="mb-1 text-base font-bold text-text-primary dark:text-white">Sensitive Groups</h4>
+<p class="text-sm text-text-secondary">No special precautions needed today.</p>
+</div>
+<!-- Card 3 -->
+<div class="flex min-w-[200px] flex-col rounded-xl bg-white p-4 shadow-sm dark:bg-[#1A2E22]">
+<div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
+<span class="material-symbols-outlined">window</span>
+</div>
+<h4 class="mb-1 text-base font-bold text-text-primary dark:text-white">Ventilation</h4>
+<p class="text-sm text-text-secondary">Open windows to let fresh air in.</p>
+</div>
+</div>
+</div>
+<!-- Quick Actions Grid -->
+<div class="flex flex-col gap-3">
+<h3 class="text-lg font-bold text-text-primary dark:text-white">Quick Actions</h3>
+<div class="grid grid-cols-2 gap-3">
+<!-- Action 1: Insights -->
+<div class="group relative flex cursor-pointer flex-col justify-between overflow-hidden rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md dark:bg-[#1A2E22]">
+<div class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-green-50 dark:bg-green-900/10"></div>
+<div class="mb-4 h-10 w-10 rounded-lg bg-green-100 p-2 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<div>
+<p class="text-base font-bold text-text-primary dark:text-white">Health Insights</p>
+<p class="text-xs text-text-secondary">View trends</p>
+</div>
+</div>
+<!-- Action 2: Share -->
+<div class="group relative flex cursor-pointer flex-col justify-between overflow-hidden rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md dark:bg-[#1A2E22]">
+<div class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-blue-50 dark:bg-blue-900/10"></div>
+<div class="mb-4 h-10 w-10 rounded-lg bg-blue-100 p-2 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div>
+<p class="text-base font-bold text-text-primary dark:text-white">Share Data</p>
+<p class="text-xs text-text-secondary">Invite friends</p>
+</div>
+</div>
+<!-- Action 3: Travel -->
+<div class="group relative flex cursor-pointer flex-col justify-between overflow-hidden rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md dark:bg-[#1A2E22]">
+<div class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-purple-50 dark:bg-purple-900/10"></div>
+<div class="mb-4 h-10 w-10 rounded-lg bg-purple-100 p-2 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<p class="text-base font-bold text-text-primary dark:text-white">Travel Plan</p>
+<p class="text-xs text-text-secondary">Clean routes</p>
+</div>
+</div>
+<!-- Action 4: Purifier (Optional context) -->
+<div class="group relative flex cursor-pointer flex-col justify-between overflow-hidden rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md dark:bg-[#1A2E22]">
+<div class="absolute right-0 top-0 h-24 w-24 translate-x-8 translate-y-[-20%] rounded-full bg-orange-50 dark:bg-orange-900/10"></div>
+<div class="mb-4 h-10 w-10 rounded-lg bg-orange-100 p-2 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
+<span class="material-symbols-outlined">mode_fan</span>
+</div>
+<div>
+<p class="text-base font-bold text-text-primary dark:text-white">My Devices</p>
+<p class="text-xs text-text-secondary">Manage purifiers</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Preview Section (Bonus for context) -->
+<div class="mt-2 flex flex-col gap-3">
+<h3 class="text-lg font-bold text-text-primary dark:text-white">Live Map</h3>
+<div class="relative h-48 w-full overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-800">
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="Map showing air quality heatmap overlays on city streets" data-location="San Francisco map view" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCC_yiPTz7ocWTBK6DDJSHvi5sCbb04u2EUDviFULdDOQ1bkqDmhse9GaQmsi2W-jLnz4df0SxG07OupTDOjgbuCqWnxLvnTA2ku3bQRyydHH6zgkjAPz0EZVP8KH_IAlAzZCwJxsTcV53_B8m41T7_KCbcDQN7tC1FTkJAOFzI7aN8-P0pGLl_q3ymzuNkFreDU87jTwIXDhiCM1rCI-yxUSMjEV2toNHB57vNlx44oB4QtvCbxJ4V9miPrHfcEBMPeJAS98gQOT8');"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 rounded-lg bg-white/90 p-2 shadow-sm backdrop-blur-sm dark:bg-[#102218]/90">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="text-xs font-bold text-text-primary dark:text-white">Your neighborhood is green</span>
+</div>
+<button class="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-black shadow-md">
+<span class="material-symbols-outlined text-lg">near_me</span>
+</button>
+</div>
+</div>
+<div class="h-20 w-full"></div> <!-- Spacer for Tab Bar -->
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 mx-auto max-w-md border-t border-gray-100 bg-white px-6 py-2 pb-5 dark:border-gray-800 dark:bg-[#1A2E22]">
+<ul class="flex items-center justify-between">
+<li class="flex flex-col items-center gap-1">
+<button class="group flex flex-col items-center text-primary">
+<span class="material-symbols-outlined filled text-2xl" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+</li>
+<li class="flex flex-col items-center gap-1">
+<button class="group flex flex-col items-center text-gray-400 hover:text-primary dark:text-gray-500">
+<span class="material-symbols-outlined text-2xl">map</span>
+<span class="text-[10px] font-medium">Map</span>
+</button>
+</li>
+<li class="flex flex-col items-center gap-1">
+<button class="group flex flex-col items-center text-gray-400 hover:text-primary dark:text-gray-500">
+<span class="material-symbols-outlined text-2xl">groups</span>
+<span class="text-[10px] font-medium">Community</span>
+</button>
+</li>
+<li class="flex flex-col items-center gap-1">
+<button class="group flex flex-col items-center text-gray-400 hover:text-primary dark:text-gray-500">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</li>
+</ul>
+</nav>
+</div>
+</body></html>
