@@ -1,1 +1,2 @@
-/*  https://breathealot.netlify.app  301!
+# Redirect only the old preview deploy to the main site
+https://69392c9282b9f8dcb7096743--breathealot.netlify.app/* https://breathealot.netlify.app/:splat 301!
